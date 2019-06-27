@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 /* 通用常量 */
-#define sstd_simd_force_align 32
+#define sstd_simd_force_align 16
 
 #if defined(SSTD_HAS_SIMD)
 
@@ -21,7 +21,7 @@ inline bool _sstd_simd_check_align(const void * arg){
 #endif
 
 /*头文件及类型*/
-#if defined(SSTD_SIMD_MSVC)
+#if defined(SSTD_SIMD_MSVC) || defined(SSTD_SIMD_WINDOWS_GCC)
 
 #include <xmmintrin.h>
 #define sstd_simd_m128 __m128 /*float[4]*/
@@ -33,7 +33,7 @@ inline bool _sstd_simd_check_align(const void * arg){
 inline sstd_simd_m128 sstd_simd_load_m128(const float * arg){
     assert(arg);
     assert(sstd_simd_check_align(arg));
-#if defined(SSTD_SIMD_MSVC)
+#if defined(SSTD_SIMD_MSVC) || defined(SSTD_SIMD_WINDOWS_GCC)
     return _mm_load_ps(arg);
 #endif
 }
@@ -41,13 +41,13 @@ inline sstd_simd_m128 sstd_simd_load_m128(const float * arg){
 inline void sstd_simd_store_m128(const sstd_simd_m128 & argSimd,float * arg){
     assert(arg);
     assert(sstd_simd_check_align(arg));
-#if defined(SSTD_SIMD_MSVC)
+#if defined(SSTD_SIMD_MSVC) || defined(SSTD_SIMD_WINDOWS_GCC)
     return _mm_store_ps(arg,argSimd);
 #endif
 }
 
 inline sstd_simd_m128 sstd_simd_mul_m128(const sstd_simd_m128 & argL,const sstd_simd_m128 & argR){
-#if defined(SSTD_SIMD_MSVC)
+#if defined(SSTD_SIMD_MSVC) || defined(SSTD_SIMD_WINDOWS_GCC)
     return _mm_mul_ps(argL,argR);
 #endif
 }

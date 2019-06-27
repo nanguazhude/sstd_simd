@@ -8,7 +8,9 @@ CONFIG(debug,debug|release){
 
 SOURCES += $$PWD/main.cpp
 
+CONFIG += c++17
 include($$PWD/../sstd_simd.pri)
-include($$PWD/../../sstd_library/sstd_library.pri)
-DESTDIR = $${SSTD_LIBRARY_OUTPUT_PATH}
+
+
+
 

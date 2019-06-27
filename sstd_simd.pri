@@ -10,7 +10,7 @@ linux-g++ {
 # win32-g++
 win32-g++ {
     DEFINES *= SSTD_HAS_SIMD=1
-    DEFINES *= SSTD_SIMD_GCC=1
+    DEFINES *= SSTD_SIMD_WINDOWS_GCC=1
 }
 
 # win32-g++
