@@ -10,7 +10,7 @@
 #include <cstdint>
 
 inline bool _sstd_simd_check_align(const void * arg){
-    return 0u==(reinterpret_cast< const std::uintptr_t >(arg) &
+    return 0u==(reinterpret_cast< std::uintptr_t >(arg) &
                static_cast<std::uintptr_t>(sstd_simd_force_align-1) );
 }
 
